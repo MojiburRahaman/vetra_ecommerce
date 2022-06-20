@@ -1,12 +1,12 @@
 @extends('backend.master')
 
 @section('title')
-Category
+Brands
 @endsection
 
 @section('content')
 <div class="row">
-  <h3>Category</h3>
+  <h3>Sub-Category</h3>
   @if (session('success'))
       
   <div class="alert alert-success" role="alert">
@@ -28,31 +28,29 @@ Category
     <div class="col-12">
 
         <div>
-            <a href="{{route('category.create')}}" class="btn-sm btn-success text-right" style="float: right;">Add Category</a>
+            <a href="{{route('brand.create')}}" class="btn-sm btn-success text-right" style="float: right;">Add Brands</a>
         </div>
         <table class="table table-hover text-nowrap">
             <thead>
               <tr>
                 <th >#</th>
                 <th >Title</th>
-                <th >Thumbnail</th>
+                <th >Thumnail</th>
                 <th >Action</th>
               </tr>
             </thead>
             <tbody>
-              @forelse ($categoreis as $item)
+              @forelse ($brands as $item)
                   
               <tr>
                 <td>{{$loop->index+1}}</td>
                 <td>{{$item->title}}</td>
+                <td><img width="40px" src="{{asset('brand_img/' . $item->thumbnail)}}" alt="{{$item->title}}"></td>
                 <td>
-                  <img src="{{asset('category_images/'.$item->thumbnail)}}" width="40px" alt="">
-                </td>
-                <td>
-                  <a href="{{route('category.edit',$item->id)}}" class="btn-sm btn-success " >Edit </a>
+                  <a href="{{route('brand.edit',$item->id)}}" class="btn-sm btn-success " >Edit </a>
                   {{-- &nbsp; --}}
                   <br>
-                  <form action="{{route('category.destroy',$item->id)}}" method="POST">
+                  <form action="{{route('brand.destroy',$item->id)}}" method="POST">
                     @csrf
                     @method('delete')
                     <button class="btn-sm btn-danger"  style="">Delete</button>
@@ -60,16 +58,16 @@ Category
                 </td>
               </tr>
               @empty
-              <tr>
-                <td colspan="10" class="text-center">
-                    No data
-                </td>
-              </tr>
+                  <tr>
+                    <td colspan="10" class="text-center">
+                        No data
+                    </td>
+                  </tr>
               @endforelse
             </tbody>
           </table>
           <div class="text-left mt-4">
-            {{$categoreis->links()}}
+            {{$brands->links()}}
           </div>
     </div>
     </div>
