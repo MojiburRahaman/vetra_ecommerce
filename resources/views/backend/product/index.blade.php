@@ -22,16 +22,18 @@
         @endif
         <div class="col-12">
 
-            <div>
-                <a href="{{ route('product.create') }}" id="add_product_btn" class="btn btn-primary btn-icon"
+            <div class="mb-4">
+                <a href="{{ route('product.create') }}" id="add_product_btn" class="btn-sm btn-primary btn-icon"
                     style="float: right;">Add Product</a>
             </div>
-            <table class="table table-hover text-nowrap">
+            <table class="table table-hover text-nowrap mt-4">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Title</th>
                         <th>Thumbnail</th>
+                        <th class="text-center">Status</th>
+
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -41,9 +43,17 @@
                             <td>{{ $loop->index + 1 }}</td>
                             <td>{{ $item->title }}</td>
                             <td>
-                                <img src="{{ asset('category_images/' . $item->thumbnail) }}" width="40px"
+                                <img src="{{ asset('thumbnail_img/' . $item->thumbnail_img) }}" width="40px"
                                     alt="">
                             </td>
+                            <td class="text-center">
+                                @if ($item->status == 1)
+                                    <a href="{{route('ProductStatus',$item->id)}}" class="btn-sm btn-success">Active</a>
+                                @else
+                                    <a href="{{route('ProductStatus',$item->id)}}" class="btn-sm btn-danger">Inactive</a>
+                                @endif
+                            </td>
+
                             <td>
                                 <a href="{{ route('product.edit', $item->id) }}" class="btn-sm btn-success ">Edit </a>
                                 {{-- &nbsp; --}}

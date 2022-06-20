@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id');
             $table->foreignId('subcatagory_id');
             $table->foreignId('brand_id')->nullable();
-            $table->tinyInteger('disount')->nullable()->comment('discount percent');
+            $table->tinyInteger('discount')->nullable()->comment('discount percent');
             $table->string('regular_price');
             $table->string('sale_price')->nullable()->comment('discount_price');
             $table->string('thumbnail_img');

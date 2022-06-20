@@ -147,7 +147,7 @@
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="disount">Discount</label>
-                        <input id="disount" required name="disount" type="numeric" placeholder="Discount" autocomplete="none"
+                        <input id="disount"  name="discount" type="numeric" placeholder="Discount" autocomplete="none"
                             value="{{ old('disount') }}" class="form-control @error('disount') is-invalid @enderror">
                         @error('disount')
                             <div class="alert alert-danger">
