@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Vetra | E-Commerce HTML Admin Dashboard Template </title>
+    <title> @yield('title') </title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
@@ -28,6 +28,7 @@
 
     <!-- Main style file -->
     <link rel="stylesheet" href="{{ asset('backend/dist/css/app.min.css') }}" type="text/css">
+    @yield('css')
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,10 +39,10 @@
 <body>
 
     <!-- preloader -->
-    <div class="preloader">
+    {{-- <div class="preloader">
         <img src="https://vetra.laborasyon.com/assets/images/logo.svg" alt="logo">
         <div class="preloader-icon"></div>
-    </div>
+    </div> --}}
     <!-- ./ preloader -->
 
     <!-- sidebars -->
@@ -571,7 +572,8 @@
             <ul>
                 <li class="menu-divider">E-Commerce</li>
                 <li>
-                    <a class="{{(url()->current() ==route('DashboardView'))? 'active' : ''}}" href="{{route('DashboardView')}}">
+                    <a class="{{ url()->current() == route('DashboardView') ? 'active' : '' }}"
+                        href="{{ route('DashboardView') }}">
                         <span class="nav-link-icon">
                             <i class="bi bi-bar-chart"></i>
                         </span>
@@ -579,11 +581,39 @@
                     </a>
                 </li>
                 <li>
-                    <a class="{{(url()->current() ==route('category.index'))? 'active' : ''}}" href="{{route('category.index')}}">
+                    <a class="{{ url()->current() == route('category.index') ? 'active' : '' }}"
+                        href="{{ route('category.index') }}">
                         <span class="nav-link-icon">
                             <i class="bi bi-bar-chart"></i>
                         </span>
                         <span>Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ url()->current() == route('subcategory.index') ? 'active' : '' }}"
+                        href="{{ route('subcategory.index') }}">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </span>
+                        <span>SubCategory</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ url()->current() == route('brand.index') ? 'active' : '' }}"
+                        href="{{ route('brand.index') }}">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </span>
+                        <span>Brand</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="{{ url()->current() == route('product.index') ? 'active' : '' }}"
+                        href="{{ route('product.index') }}">
+                        <span class="nav-link-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </span>
+                        <span>Product</span>
                     </a>
                 </li>
             </ul>
@@ -723,6 +753,7 @@
         <!-- content -->
         <div class="content ">
 
+            @yield('content')
 
 
         </div>
@@ -745,6 +776,7 @@
     <!-- ./ layout-wrapper -->
 
     <!-- Bundle scripts -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="{{ asset('backend/libs/bundle.js') }}"></script>
 
     <!-- Apex chart -->
@@ -758,6 +790,8 @@
 
     <!-- Main Javascript file -->
     <script src="{{ asset('backend/dist/js/app.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+    @yield('script_js')
 </body>
 
 <!-- Mirrored from vetra.laborasyon.com/demos/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 Jun 2022 11:24:58 GMT -->
